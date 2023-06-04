@@ -27,14 +27,15 @@ const JobDetails = () => {
 		job_ib: params.id,
 	});
 
+	const [refreshing, setRefreshing] = useState(false);
+
 	return (
 		<SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
 			<Stack.Screen
 				options={{
 					headerStyle: { backgroundColor: COLORS.lightWhite },
 					headerShadowVisible: false,
-					headerBack,
-					Visible: false,
+					headerBackVisible: false,
 					headerLeft: () => (
 						<ScreenHeaderBtn
 							iconUrl={icons.left}
@@ -42,15 +43,20 @@ const JobDetails = () => {
 							handlePress={() => router.back()}
 						/>
 					),
-                    headerRight: () =>(
-                        <ScreenHeaderBtn
-                        iconUrl={icons.share}
-                        dimension="60%"/>
-                    ),
-                    headerTitle: 
-
+					headerRight: () => (
+						<ScreenHeaderBtn iconUrl={icons.share} dimension='60%' />
+					),
+					headerTitle: '',
 				}}
-			></Stack.Screen>
+			/>
+			<>
+				<ScrollView
+					showsVerticalScrollIndicator={false}
+					refreshControl={
+						<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+					}
+				></ScrollView>
+			</>
 		</SafeAreaView>
 	);
 };
