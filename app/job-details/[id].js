@@ -19,6 +19,8 @@ import {
 import { COLORS, icons, SIZES } from '../../constants';
 import useFetch from '../../hook/useFetch';
 
+const tabs = ["About", "Qualifications", "Resposibilites"]
+
 const JobDetails = () => {
 	const params = useSearchParams();
 	const router = useRouter();
@@ -28,6 +30,8 @@ const JobDetails = () => {
 	});
 
 	const [refreshing, setRefreshing] = useState(false);
+	const[activeTab, setActive] = useState(tabs[0])
+
 	const onRefresh = () => {};
 
 	return (
