@@ -10,6 +10,9 @@ const Tabs = ({ tabs, activeTab, setActiveTab }) => {
 		<View style={styles.container}>
 			<FlatList
       data={tabs}
+      renderItem={({item}) =>(
+        <TabButton/>
+      )}
       />
 		</View>
 	);
