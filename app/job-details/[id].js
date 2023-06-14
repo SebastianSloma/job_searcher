@@ -36,11 +36,17 @@ const JobDetails = () => {
 
 	const displayTabContent = () => {
 		switch (activeTab) {
-			case 'value':
+			case 'Qualifications':
+				return <Specifics
+				title="Qualifications"
+				points={data[0].job_highlights?.qualifications ?? ['N/A']}
+				/>
+				case "About":
+				case "Responsibilities":
+					default:
 				break;
 
-			default:
-				break;
+			
 		}
 	};
 
