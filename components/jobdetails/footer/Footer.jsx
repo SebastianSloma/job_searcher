@@ -7,7 +7,7 @@ import { icons } from '../../../constants'
 const Footer = () => {
   return (
     <View style={styles.container}>
-      <TouchableOpacity>
+      <TouchableOpacity style={styles.likeBtn}>
         <Image
         source={icons.heartOutline}
         resizeMode='contain'
@@ -16,7 +16,8 @@ const Footer = () => {
 
       </TouchableOpacity>
 
-      <TouchableOpacity>
+      <TouchableOpacity style={styles.applyBtn} onPress={()=> Linking.openURL(url)}>
+        <Text style={styles.applyBtnText}>Apply for job</Text>
         
       </TouchableOpacity>
     </View>
