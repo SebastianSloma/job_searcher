@@ -32,23 +32,34 @@ const JobDetails = () => {
 	const [refreshing, setRefreshing] = useState(false);
 	const [activeTab, setActive] = useState(tabs[0]);
 
-	const onRefresh = () => {};
+	const onRefresh = useCallback(() => {
+		setRefreshing(true);
+		refetch();
+		setRefreshing(false);
+	}, []);
 
 	const displayTabContent = () => {
 		switch (activeTab) {
 			case 'Qualifications':
-				return <Specifics
-				title="Qualifications"
-				points={data[0].job_highlights?.qualifications ?? ['N/A']}
-				/>
-				case "About":
-					return <JobAbout info={data[0].job_description ?? "No data provided"}/>
-				case "Responsibilities":
-					return<Specifics title="Responsibilites" points={data[0].job_highlights?.Responsbilites ?? ['N/A']}/>
-					default:
+				return (
+					<Specifics
+						title='Qualifications'
+						points={data[0].job_highlights?.qualifications ?? ['N/A']}
+					/>
+				);
+			case 'About':
+				return (
+					<JobAbout info={data[0].job_description ?? 'No data provided'} />
+				);
+			case 'Responsibilities':
+				return (
+					<Specifics
+						title='Responsibilites'
+						points={data[0].job_highlights?.Responsbilites ?? ['N/A']}
+					/>
+				);
+			default:
 				break;
-
-			
 		}
 	};
 
@@ -104,7 +115,11 @@ const JobDetails = () => {
 					)}
 				</ScrollView>
 
-				<JobFooter url={data[0]?.job_google_link ?? 'http://careers.google.com/jobs/results'}/>
+				<JobFooter
+					url={
+						data[0]?.job_google_link ?? 'http://careers.google.com/jobs/results'
+					}
+				/>
 			</>
 		</SafeAreaView>
 	);
